@@ -524,11 +524,13 @@ function formatTime(ms) {
 
 function cardImgUrl(color, side, num) {
   const p = COLORS[color].prefix;
-  return `https://github.com/byakusen/geogelglegeo/blob/main/${p}${side}${String(num).padStart(2,'0')}.jpg?raw=true`;
+  // 同一リポジトリの cards/ フォルダから相対パスで読み込む（GitHub PagesのCDN経由・レート制限なし）
+  return `cards/${p}${side}${String(num).padStart(2,'0')}.jpg`;
 }
 function cardAudioUrl(color, num) {
   const p = COLORS[color].audioPrefix;
-  return `https://github.com/byakusen/gogeogelgege.hyakuninisshu_onsei/raw/refs/heads/main/${p}${String(num).padStart(2,'0')}.mp3`;
+  // 同一リポジトリの audio/ フォルダから相対パスで読み込む
+  return `audio/${p}${String(num).padStart(2,'0')}.mp3`;
 }
 
 const State = { currentColor: 'blue', games: {}, cardSize: { w: 100, h: 150 } };
